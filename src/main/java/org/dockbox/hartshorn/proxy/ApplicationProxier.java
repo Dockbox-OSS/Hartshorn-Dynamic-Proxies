@@ -47,4 +47,6 @@ public interface ApplicationProxier extends ProxyLookup {
     <T> StateAwareProxyFactory<T, ?> factory(TypeContext<T> type);
 
     <T> StateAwareProxyFactory<T, ?> factory(Class<T> type);
+
+    void registerProxyLookup(ProxyLookup proxyLookup);
 }

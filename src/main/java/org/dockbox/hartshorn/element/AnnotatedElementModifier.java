@@ -26,7 +26,7 @@ import java.lang.reflect.AnnotatedElement;
  * @param <A> The type of the annotated element represented by the modified {@link AnnotatedElementContext}.
  * @see AnnotatedElement
  * @author Guus Lieben
- * @since 22.1
+ * @since 22.2
  */
 public final class AnnotatedElementModifier<A extends AnnotatedElement> implements ElementModifier<AnnotatedElementContext<A>> {
 

@@ -23,7 +23,7 @@ package org.dockbox.hartshorn.element;
  *
  * @param <E> The type of the element to modify.
  * @author Guus Lieben
- * @since 22.1
+ * @since 22.2
  */
 @FunctionalInterface
 public interface ElementModifier<E extends QualifiedElement> {

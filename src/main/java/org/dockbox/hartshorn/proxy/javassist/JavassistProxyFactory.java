@@ -38,7 +38,8 @@ public class JavassistProxyFactory<T> extends DefaultProxyFactory<T> {
     }
 
     public JavassistProxyFactory(final Class<T> type, final ApplicationProxier applicationContext) {
-        super(type, applicationContext);
+        super(type);
+        this.applicationContext().registerProxyLookup(new JavassistProxyLookup());
     }
 
     @Override

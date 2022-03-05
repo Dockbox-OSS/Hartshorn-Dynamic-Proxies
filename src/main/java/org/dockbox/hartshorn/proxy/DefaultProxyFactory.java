@@ -86,9 +86,10 @@ public abstract class DefaultProxyFactory<T> implements StateAwareProxyFactory<T
     private boolean trackState = true;
     private boolean modified;
 
-    public DefaultProxyFactory(final Class<T> type, final ApplicationProxier applicationContext) {
+    public DefaultProxyFactory(final Class<T> type) {
         this.type = type;
-        this.applicationContext = applicationContext;
+        this.applicationContext = new SimpleApplicationProxier();
+        this.applicationContext().registerProxyLookup(new NativeProxyLookup());
     }
 
     protected void updateState() {

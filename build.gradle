@@ -39,7 +39,7 @@ repositories {
     mavenCentral()
 }
 
-
+description = 'Hartshorn Dynamic Proxies'
 version = projectVersion
 group project.projectGroup
 
@@ -51,7 +51,6 @@ dependencyCheck {
     failBuildOnCVSS = 1
     failOnError = true
 }
-
 
 license {
     header = rootProject.file("HEADER.txt")
@@ -81,6 +80,7 @@ tasks.withType(Javadoc) {
 }
 
 dependencies {
+    implementation "org.javassist:javassist:$javassistVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"

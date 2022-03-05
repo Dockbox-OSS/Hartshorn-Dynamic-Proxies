@@ -1,0 +1,13 @@
+# Generic build outputs
+build
+subject
+# Project specifics
+.gradle/
+.idea/
+*.iml
+*.hprof
+dependency-reduced-pom.xml
+# Test resources
+*.log
+.jpb
+*/generated

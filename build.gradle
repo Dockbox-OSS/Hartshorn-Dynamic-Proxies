@@ -1,0 +1,85 @@
+/*
+ * Copyright 2019-2022 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.owasp:dependency-check-gradle:$owaspDependencyCheckVersion"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.cadixdev.licenser' version "$licenserVersion"
+    id 'org.checkerframework' version "$checkerFrameworkVersion"
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'org.owasp.dependencycheck'
+apply plugin: 'maven-publish'
+
+version = projectVersion
+group project.projectGroup
+
+sourceCompatibility = 8
+targetCompatibility = 8
+
+dependencyCheck {
+    // Strict rule, even small vulnerabilities should be handled unless they are suppressed
+    failBuildOnCVSS = 1
+    failOnError = true
+}
+
+
+license {
+    header = rootProject.file("HEADER.txt")
+    ignoreFailures = false
+    include '**/*.java'
+}
+
+tasks.build {
+    dependsOn tasks.updateLicenses
+    finalizedBy tasks.clean
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-parameters'
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(Javadoc) {
+    failOnError false
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}

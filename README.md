@@ -118,7 +118,7 @@ public class UserImpl implements User {
 }
 ```
 ```java
-final StateAwareProxyFactory<User, ?> factory = applicationManager.factory(TypeContext.of(User.class));
+final StateAwareProxyFactory<User, ?> factory = applicationManager.factory(User.class);
 factory.delegate(new UserImpl());
 final User user = factory.proxy().get();
 user.greeting(); // Returns 'Hello implementation!'
@@ -141,7 +141,7 @@ public class ContextCarrierImpl implements ContextCarrier {
 }
 ```
 ```java
-final StateAwareProxyFactory<User, ?> factory = applicationManager.factory(TypeContext.of(User.class));
+final StateAwareProxyFactory<User, ?> factory = applicationManager.factory(User.class);
 factory.delegate(ContextCarrier.class, new ContextCarrierImpl());
 final User user = factory.proxy().get();
 user.applicationContext(); // Returns a valid application context
@@ -166,7 +166,7 @@ public class ReturnerImpl implements Returner {
 }
 ```
 ```java
-final StateAwareProxyFactory<User, ?> factory = applicationManager.factory(TypeContext.of(User.class));
+final StateAwareProxyFactory<User, ?> factory = applicationManager.factory(User.class);
 factory.delegate(Returner.class, new ReturnerImpl());
 final User user = factory.proxy().get();
 user.self(); // Returns the user proxy object instead of the ReturnerImpl instance

@@ -31,12 +31,14 @@ plugins {
     id 'org.checkerframework' version "$checkerFrameworkVersion"
 }
 
+apply from: "$project.rootDir/gradle/publications.gradle"
+apply plugin: 'org.owasp.dependencycheck'
+apply plugin: 'maven-publish'
+
 repositories {
     mavenCentral()
 }
 
-apply plugin: 'org.owasp.dependencycheck'
-apply plugin: 'maven-publish'
 
 version = projectVersion
 group project.projectGroup

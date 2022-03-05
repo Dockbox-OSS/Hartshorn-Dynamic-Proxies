@@ -1,5 +1,5 @@
 # <img alt="Hartshorn" src="https://github.com/GuusLieben/Hartshorn/blob/develop/hartshorn-assembly/images/logo.png" height="100" /> Hartshorn Dynamic Proxies
-Hartshorn Dynamic Proxies (HDP) is a Java dynamic object proxy library, extracted as standalone component from the Hartshorn framework. [Hartshorn](https://hartshorn.dockbox.org/) is a modern JVM-based full stack Java framework, which can be found at [GuusLieben/Hartshorn](https://github.com/GuusLieben/Hartshorn).
+Hartshorn Dynamic Proxies (HDP) is a Java dynamic object proxy library supporting the proxying of all **non-final** types, including interfaces, abstract-, and concrete classes. It is extracted as a standalone component from the Hartshorn framework. [Hartshorn](https://hartshorn.dockbox.org/) is a modern JVM-based full stack Java framework, which can be found at [GuusLieben/Hartshorn](https://github.com/GuusLieben/Hartshorn). 
 
 ### Maven configuration 
 To get started, add the Maven dependency:
